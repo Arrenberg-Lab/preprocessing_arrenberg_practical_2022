@@ -1,5 +1,5 @@
-# preprocessing_arrenberg_practical_2022
-authors: Yue Zhang, David Burkhardt (AG Arrenberg)
+# preprocessing_arrenberg_practical_2023
+authors: Yue Zhang, David Burkhardt, Tim Hladnik (AG Arrenberg)
 
 Install an Anaconda distribution of Python (https://www.anaconda.com/products/distribution) -- Choose Python 3.x and your operating system. 
 
@@ -8,3 +8,9 @@ Install an Anaconda distribution of Python (https://www.anaconda.com/products/di
 3. Change directory to where the <code>environment.yml</code> is and run <code>conda env create -f environment.yml</code>
 4. Open the Anaconda Navigator and change the environment to <code>ca_prepro_arrenberg</code>
 5. Install and launch Jupyer Notebook (using the Anaconda Navigator) and open the analysis scripts
+
+Usefull Links:
+MView for viewing .MDF files
+* https://www.sutter.com/SOFTWARE/microscope_frame.html
+HDFView for viewing .hdf5 files
+* https://www.hdfgroup.org/downloads/hdfview/
