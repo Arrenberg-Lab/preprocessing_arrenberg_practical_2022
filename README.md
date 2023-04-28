@@ -10,7 +10,9 @@ Install an Anaconda distribution of Python (https://www.anaconda.com/products/di
 5. Install and launch Jupyer Notebook (using the Anaconda Navigator) and open the analysis scripts
 
 Usefull Links:
+
 MView for viewing .MDF files
 * https://www.sutter.com/SOFTWARE/microscope_frame.html
+
 HDFView for viewing .hdf5 files
 * https://www.hdfgroup.org/downloads/hdfview/
