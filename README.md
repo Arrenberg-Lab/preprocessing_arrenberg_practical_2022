@@ -2,6 +2,7 @@
 authors: Yue Zhang, David Burkhardt, Tim Hladnik (AG Arrenberg)
 
 ---
+Installation of Anaconda and virtual environment:
 Install an Anaconda distribution of Python (https://www.anaconda.com/products/distribution) -- Choose Python 3.x and your operating system. 
 
 1. Download the repository and extract all files into your target directory
