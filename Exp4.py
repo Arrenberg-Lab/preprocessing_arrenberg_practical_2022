@@ -261,7 +261,7 @@ def align_stimulus_to_ca_frames(stim_fn,timefn):
     for i in phaseAttr:
         phase_num = i[0]
         ca_start_frame = np.argmin(np.abs(i[1]['__start_time'] - ca_frame_time))
-        ca_end_frame = np.argmin(np.abs(i[1]['__end_time'] - ca_frame_time))+1
+        ca_end_frame = np.argmin(np.abs(i[1]['__target_end_time'] - ca_frame_time))+1
         stim_array[ca_start_frame:ca_end_frame,0] = phase_num
         if 'angular_velocity' in i[1].keys():
             stim_array[ca_start_frame:ca_end_frame,1] = i[1]['angular_velocity']
