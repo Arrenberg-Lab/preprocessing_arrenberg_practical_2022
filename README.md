@@ -1,5 +1,5 @@
 # preprocessing_arrenberg_practical_2023
-authors: Yue Zhang, David Burkhardt, Tim Hladnik (AG Arrenberg)
+authors: Yue Zhang, David Burkhardt, Tim Hladnik (AG Arrenberg, CIN, Tuebingen University)
 
 ---
 Installation of Anaconda and virtual environment:
