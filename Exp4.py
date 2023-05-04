@@ -258,6 +258,7 @@ def align_stimulus_to_ca_frames(stim_fn,timefn):
     phaseIdx = np.argsort([i[0] for i in phaseAttr])
     phaseAttr = [phaseAttr[i] for i in phaseIdx]
     stim_array = np.zeros([ca_frame_idx.shape[0],3])
+    stim_array[:] = np.nan
     for i in phaseAttr:
         phase_num = i[0]
         ca_start_frame = np.argmin(np.abs(i[1]['__start_time'] - ca_frame_time))
@@ -267,13 +268,15 @@ def align_stimulus_to_ca_frames(stim_fn,timefn):
             stim_array[ca_start_frame:ca_end_frame,1] = i[1]['angular_velocity']
             stim_array[ca_start_frame:ca_end_frame,2] = i[1]['angular_period']
         else:
-            stim_array[ca_start_frame:ca_end_frame, 1] = -99
-            stim_array[ca_start_frame:ca_end_frame, 2] = -99
+            stim_array[ca_start_frame:ca_end_frame, 1] = np.nan
+            stim_array[ca_start_frame:ca_end_frame, 2] = np.nan        
     stimulus_info = {'phase': stim_array[:,0],
                      'speed': stim_array[:,1],
                      'spatial_freq': stim_array[:,2],
                      'time': ca_frame_time,
                      }
     stimulus_info = pd.DataFrame(data=stimulus_info)
-    stimulus_info.set_index('time')
-    return stimulus_info
+    stimulus_info.set_index('time')    
+    
+    cut_stimulus_info = stimulus_info[stimulus_info['phase'].notna()]
+    return cut_stimulus_info
