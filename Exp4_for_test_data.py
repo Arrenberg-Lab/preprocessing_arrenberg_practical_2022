@@ -243,8 +243,8 @@ def frame_detection(mirTime, mirPos):
 
 def extract_timeinfo(timefn):
     timefile = h5.File(timefn)
-    mirTime = timefile['ai_y_mirror_in_time']
-    mirPos = timefile['ai_y_mirror_in']
+    mirTime = timefile['y_mirror_in_attr_time']
+    mirPos = timefile['y_mirror_in']
     mirTime = np.squeeze(mirTime)
     mirPos = np.squeeze(mirPos)
     ca_frame_time, ca_frame_idx = frame_detection(mirTime,mirPos)
@@ -261,22 +261,20 @@ def align_stimulus_to_ca_frames(stim_fn,timefn):
     stim_array[:] = np.nan
     for i in phaseAttr:
         phase_num = i[0]
-        ca_start_frame = np.argmin(np.abs(i[1]['__start_time'] - ca_frame_time))
-        ca_end_frame = np.argmin(np.abs(i[1]['__target_end_time'] - ca_frame_time))+1
+        ca_start_frame = np.argmin(np.abs(i[1]['start_time'] - ca_frame_time))
+        ca_end_frame = np.argmin(np.abs(i[1]['end_time'] - ca_frame_time))+1
         stim_array[ca_start_frame:ca_end_frame,0] = phase_num
         if 'angular_velocity' in i[1].keys():
             stim_array[ca_start_frame:ca_end_frame,1] = i[1]['angular_velocity']
             stim_array[ca_start_frame:ca_end_frame,2] = i[1]['angular_period']
         else:
             stim_array[ca_start_frame:ca_end_frame, 1] = np.nan
-            stim_array[ca_start_frame:ca_end_frame, 2] = np.nan        
+            stim_array[ca_start_frame:ca_end_frame, 2] = np.nan
     stimulus_info = {'phase': stim_array[:,0],
                      'speed': stim_array[:,1],
                      'spatial_freq': stim_array[:,2],
                      'time': ca_frame_time,
                      }
     stimulus_info = pd.DataFrame(data=stimulus_info)
-    stimulus_info.set_index('time')    
-    
-    cut_stimulus_info = stimulus_info[stimulus_info['phase'].notna()]
-    return cut_stimulus_info
+    stimulus_info.set_index('time')
+    return stimulus_info
