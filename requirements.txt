@@ -1,0 +1,5 @@
+scikit-image==0.19.2
+opencv-python==4.5.2
+jupyter
+pandas
+h5py
