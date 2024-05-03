@@ -87,8 +87,8 @@ def ca_prep(config):
         logger.critical('At least one of the following fields are not set: {}'.format(required_field_name))
         return None
 
-def load_ca_movie(fn):
-    return np.array(io.imread(fn))
+def load_ca_movie(*fns):
+    return np.concatenate([np.array(io.imread(fn)) for fn in fns])
 
 # function for motion correction (registration) of calcium frames (tiff-stack)
 def motion_correction(raw_frames, binsize=500, stepsize=250, show_result=True):
